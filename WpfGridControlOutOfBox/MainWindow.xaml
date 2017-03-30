@@ -1,0 +1,28 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:wpfGridControlOutOfBox="clr-namespace:WpfGridControlOutOfBox"
+        x:Class="WpfGridControlOutOfBox.MainWindow"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <wpfGridControlOutOfBox:ViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <dxg:GridControl ItemsSource="{Binding Securities}" AutoGenerateColumns="None" EnableSmartColumnsGeneration="True">
+            <dxg:GridControl.Bands>
+                <dxg:GridControlBand Header="Security">
+                    <dxg:GridColumn Header="ID" FieldName="Id"/>
+                    <dxg:GridColumn Header="Name" FieldName="Name"/>
+                </dxg:GridControlBand>
+                <dxg:GridControlBand Header="Broker">
+                    <dxg:GridColumn Header="Name" FieldName="Broker"/>
+                </dxg:GridControlBand>
+            </dxg:GridControl.Bands>
+            <dxg:GridControl.View>
+                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+    </Grid>
+</Window>

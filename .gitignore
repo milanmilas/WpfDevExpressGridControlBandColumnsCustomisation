@@ -1,0 +1,13 @@
+*.exe
+WPFGridControlOOBCustomBands/obj/
+WPFGridControlOOBCustomBands/bin/
+WPFGridControlOOBCustomColumns/obj/
+*.dll
+WPFGridControlCustomBehavior/obj/
+WPFGridControlCustomBandBehaviour/obj/
+WPFGridControlCustomBehavior/bin/
+BaseProject/obj/
+WpfGridControlOutOfBox/obj/
+WPFGridControlOOBCustomColumns/bin/
+WPFGridControlCustomBandBehaviour/bin/
+WpfGridControlOutOfBox/bin/

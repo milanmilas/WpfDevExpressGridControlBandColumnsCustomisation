@@ -1,0 +1,46 @@
+﻿<Window x:Class="WPFGridControlOOBCustomBands.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpfGridControlOobCustomBands="clr-namespace:WPFGridControlOOBCustomBands"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <wpfGridControlOobCustomBands:ViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <wpfGridControlOobCustomBands:ColumnTemplateSelector x:Key="ColumnTemplateSelector"/>
+        <DataTemplate x:Key="DefaultColumnTemplate">
+            <ContentControl>
+                <dxg:GridColumn FieldName="{Binding FieldName}" Header="{Binding Header}"/>
+            </ContentControl>
+        </DataTemplate>
+        <DataTemplate x:Key="CenterAllignmentColumnTemplate">
+            <ContentControl>
+                <dxg:GridColumn FieldName="{Binding FieldName}" Header="{Binding Header}">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            </ContentControl>
+        </DataTemplate>
+        <DataTemplate x:Key="MultiColumnBandTemplate">
+            <ContentControl>
+                <dxg:GridControlBand Header="{Binding Header }"
+                                     ColumnsSource="{Binding ChildColumns }" >
+                </dxg:GridControlBand>
+            </ContentControl>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <dxg:GridControl 
+            BandsSource="{Binding Bands}"
+            BandGeneratorTemplate="{StaticResource MultiColumnBandTemplate}"
+            ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+            ItemsSource="{Binding Securities}" AutoGenerateColumns="None" EnableSmartColumnsGeneration="True">
+            <dxg:GridControl.View>
+                <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>
